@@ -1,4 +1,9 @@
 -- SELF JOIN SECTION
+-- join another copy of a table to itself
+-- used to compare rows of the same table
+-- helps to display a heirarchy of data
+
+
 alter table customers add referral_id int;
 select * from customers;
 
@@ -26,6 +31,11 @@ select a.first_name, a.last_name, concat(b.first_name, " ", b.last_name) as "rep
 select a.first_name, a.last_name, concat(b.first_name, " ", b.last_name) as "report to" from employee as a left join employee as b on a.supervisor_id = b.supervisor_id;
 
 -- VIEWS SECTION
+-- A virtual table based on the result-set of an SQL statement
+-- The fields in a view are fields from one or more real tables in the database
+-- They're not real tables, but can be interacted with as if they were
+
+
 Select * from employee;
 
 create view employee_attendance as

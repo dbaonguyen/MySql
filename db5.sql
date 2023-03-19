@@ -35,6 +35,9 @@ select * from employee order by hire_date desc;
 select * from transactions order by amount, customer_id;
 
 -- LIMIT SECTION
+-- LIMIT clause is used to limit the number of records
+-- Useful if you're working with a lot of data
+-- Can be used to display a large data on papers (pagination)
 select * from customers limit 1;
 select * from customers limit 2;
 select * from customers limit 3;
@@ -46,7 +49,7 @@ select * from customers order by last_name desc limit 1;
 select * from customers limit 1,3;
 
 -- UNIONS SECTION
-
+-- Combines the results of two or more select statements
 Select first_name, last_name from employee union all select first_name, last_name from customers;
 
 select * from customers;
