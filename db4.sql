@@ -1,4 +1,4 @@
-
+use new_db;
 -- AUTO INCREAMENT SECTION
 create table customers(
 	customer_id int primary key auto_increment,
@@ -48,6 +48,7 @@ select * from customers;
 
 select * from transactions inner join customers on transactions.customer_id = customers.customer_id;
 select transaction_id,amount,first_name,last_name from transactions inner join customers on transactions.customer_id = customers.customer_id;
+
 
 select * from transactions left join customers on transactions.customer_id = customers.customer_id;
 
