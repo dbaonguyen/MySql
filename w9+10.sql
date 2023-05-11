@@ -56,6 +56,9 @@ INSERT INTO department (code, name, location, director) VALUES
 (2, 'Marketing', 'Los Angeles', NULL),
 (3, 'Human Resources', 'Chicago', NULL);
 
+update department set director = 4 where code = 2;
+
+select * from department;
 
 -- Insert sample employees
 INSERT INTO employee (number, name, position_code, supervisor, department_code) VALUES
@@ -83,7 +86,8 @@ INSERT INTO history (employee_number, position_code, start_date) VALUES
 (5, 3, '2021-01-01'),
 (6, 3, '2021-01-01');
 
-
+select * from department;
+select * from employee;
 -- Exercise 1
 -- 1 
 SELECT e_supervisor.name AS supervisor_name, COUNT(*) AS num_employees
@@ -106,4 +110,9 @@ WHERE ABS(p.income - (SELECT AVG(p.income) FROM post p)) <= 100;
 select e.name, p.income as highest_salary from Employee e inner join Post p on e.position_code = p.code inner join Department d on e.department_code = d.code where d.location = 'New York' and p.income = (select MAX(p.income) FROM post p);
 -- 6
 select e_supervisor.name as supervisor_name, count(*) as num_employees From employee e JOIN employee e_supervisor ON e.supervisor = e_supervisor.number GROUP BY e_supervisor.name  ORDER BY count(*) desc Limit 1;
+-- 7
+select e.name as employee_name, d.name as department_name, count(*) as num_employees from Employee e 
+INNER JOIN Department d on d.director = e.number
+INNER JOIN employee emp ON d.code = emp.department_code group by e.name, d.name;
+
 
