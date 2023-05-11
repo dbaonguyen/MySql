@@ -111,8 +111,10 @@ select e.name, p.income as highest_salary from Employee e inner join Post p on e
 -- 6
 select e_supervisor.name as supervisor_name, count(*) as num_employees From employee e JOIN employee e_supervisor ON e.supervisor = e_supervisor.number GROUP BY e_supervisor.name  ORDER BY count(*) desc Limit 1;
 -- 7
-select e.name as employee_name, d.name as department_name, count(*) as num_employees from Employee e 
+select e.name as director_name, d.name as department_name, count(*) as num_employees from Employee e 
 INNER JOIN Department d on d.director = e.number
 INNER JOIN employee emp ON d.code = emp.department_code group by e.name, d.name;
-
-
+-- 8
+select e.name as director_name, d.name as department_name, count(*) as num_employees from Employee e 
+INNER JOIN Department d on d.director = e.number
+INNER JOIN employee emp ON d.code = emp.department_code group by e.name, d.name ORDER BY count(*) desc limit 1;
